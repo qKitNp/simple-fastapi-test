@@ -1,12 +1,17 @@
 import os
 
+from pathlib import Path
+
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 
+INDEX_HTML = Path(__file__).parent / "index.html"
+
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return FileResponse(INDEX_HTML)
 
 if __name__ == "__main__":                                                                                               
        import uvicorn                                                                                                       
